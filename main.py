@@ -61,7 +61,7 @@ def main():
 
     use_counting_roi = False
     # [()-left up point ,()- left down point,()- right down point,()- right up point,()]
-    counting_roi = [(0,380), (0,416),(416,416),(416,380)]
+    counting_roi = [(10,380), (10,400),(400,400),(400,380)]
     show_roi_counting = True
     counting_roi_outside = False
 
