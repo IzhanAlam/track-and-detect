@@ -2,10 +2,10 @@ import cv2
 from collections import OrderedDict
 import time
 
-from objects import add_new_objects
-from area_check import get_roi_frame, draw_roi
-from area_check import get_counting_line, _pass
-from bbox import _centroid
+from .objects import add_new_objects
+from .area_check import get_roi_frame, draw_roi
+from .area_check import get_counting_line, _pass
+from .bbox import _centroid
 
 from shapely.geometry.polygon import Polygon
 from shapely.geometry import Point
