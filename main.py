@@ -1,7 +1,7 @@
 from default.setup import parser
 from default.setup import gstreamer_pipeline
 from util.TrackAndDetect import Frame
-import numpy
+import numpy as np
 import os
 
 def main():
