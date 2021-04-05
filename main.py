@@ -60,12 +60,13 @@ def main():
     duplicate_object_threshold = 0.1
 
     use_counting_roi = False
-    counting_roi = None
-    show_roi_counting = False
+    # [()-left up point ,()- left down point,()- right down point,()- right up point,()]
+    counting_roi = [(0,380), (0,416),(416,416),(416,380)]
+    show_roi_counting = True
     counting_roi_outside = False
 
-    counting_line_orientation = "bottom"
-    counting_line_position = 0.61
+    counting_line_orientation = None
+    counting_line_position = None
 
     use_object_liveness = False
     roi_object_liveness = None
