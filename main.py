@@ -1,5 +1,5 @@
-from initial.parser import parser
-from initial.parser import gstreamer_pipeline
+from default.parser import parser
+from default.parser import gstreamer_pipeline
 from util.TrackAndDetect import Frame
 import numpy
 import os
