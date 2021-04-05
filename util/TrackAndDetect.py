@@ -45,6 +45,7 @@ class Frame:
         self.confidenceThreshold = confidenceThreshold
         self.detection_interval = detection_interval
         
+        self.region = Polygon([(0, 0), (self.frame_width, 0), (self.frame_width, self.frame_height), (0, self.frame_height)])
 
         '''
         Check object passes line
@@ -87,13 +88,13 @@ class Frame:
         if success:
             centroid = _centroid(box)
             centroid_point = Point(centroid[0], centroid[1])
-            if self.counting_poly.contains(centroid_point):
+            if self.region.contains(centroid_point):
                 object.maxTrackingFail = 0
                 object.update(box)
                 '''
                 Track whether the object passes or not
                 '''
-
+                self.count(object)
 
             else:
                 object.maxTrackingFail += 1
