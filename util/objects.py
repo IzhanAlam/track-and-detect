@@ -1,6 +1,6 @@
-from .bbox import _centroid, _area, _overlap
+from bbox import _centroid, _area, _overlap
 from shapely.geometry import Point
-from .tracker import _tracker
+from tracker import _tracker
 import uuid
 
 class DetectedObject:
