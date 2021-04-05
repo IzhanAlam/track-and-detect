@@ -3,6 +3,7 @@ from default.setup import gstreamer_pipeline
 from util.TrackAndDetect import Frame
 import numpy as np
 import os
+import cv2
 
 def main():
     args = parser()
