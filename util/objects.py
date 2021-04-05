@@ -27,7 +27,7 @@ class DetectedObject:
         self.point_first_detected = Point(self.position_first_detected[0], self.position_first_detected[1])
 
     
-    def update(self, bounding_box_, type_, confidence_=None, tracker_=None):
+    def update(self, bounding_box_, type_=None, confidence_=None, tracker_=None):
         self.bounding_box = bounding_box_
         self.type = type_ if type_ != None else self.type
         self.type_confidence = confidence_ if confidence_ != None else self.type_confidence
@@ -45,7 +45,7 @@ def add_new_objects(boxes, classes, confidences, objects, frame, tracker, mcdf, 
     for i, box in enumerate(boxes):
         type_ = classes[i] if classes is not None else None
         confidence_ = confidences[i] if confidences is not None else None
-        tracker_ = _tracker(tracker, box, frame)
+        tracker_ = get_tracker(tracker, box, frame)
 
         match_found = False
         for _id, object in objects.items():
