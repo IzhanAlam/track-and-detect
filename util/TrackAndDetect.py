@@ -57,8 +57,8 @@ class Frame:
         '''
         Check object passes a region
         '''
-        self.counting_region = counting_region
-        self.counting_poly = Polygon(counting_region) if counting_region else None
+        self.counting_region = [(10,380), (10,400),(400,400),(400,380),(200,180)]
+        self.counting_poly = Polygon(self.counting_region) if counting_region else None
         self.counting_region_out = counting_region_out
         self.object_range = object_range if object_range else None
         self.object_range_poly = Polygon(object_range) if object_range else None
@@ -131,7 +131,6 @@ class Frame:
         self.frame_rate_processing = round(cv2.getTickFrequency() / (cv2.getTickCount() - _timer), 2)
     
     def count(self, object):
-        
         counted = False
         if self.counting_line:
             if (self.counting_line and not object.counted and (_pass(_type='line',l_point = object.centroid, c_line = self.counting_line, o_line = self.line_orientation) ^
@@ -150,11 +149,11 @@ class Frame:
         
         elif self.counting_poly:
 
-            if not object.counted and (self.counting_poly.contains(object.centroid_point) ^ self.counting_poly.contains(object.position_first_detected)):
+            if not object.counted and (self.counting_poly.contains(object.centroid_point) ^ self.counting_poly.contains(object.point_first_detected)):
                 object.counted = True
                 counted = True
 
-                if _pass(_type='polygon', c_point = object.centroid_point, f_point=object.point_first_detected, r_polygon=counting_poly, o_polygon= counting_region_out, _enter=True):
+                if _pass(_type='polygon', c_point = object.centroid_point, f_point=object.point_first_detected, r_polygon=self.counting_poly, o_polygon= self.counting_region_out, _enter=True):
                     self.person_in += 1
                     self.count_order.append("_In")
                     data = {'in':True}
@@ -179,6 +178,8 @@ class Frame:
             (x, y, w, h) = [int(v) for v in object.bounding_box]
             # blue color to the box
             color = blue
+            print(self.counting_poly.contains(object.centroid_point))
+            print(self.counting_poly.contains(object.point_first_detected))
             if object.counted and not object.just_counted:
                 color = green
                 counting_roi_color = green
@@ -216,7 +217,7 @@ class Frame:
         # show liveness roi
         if self.show_object_range and self.object_range:
             frame = draw_roi(frame, self.object_range, blue)
-
+        
         return frame
 
         
