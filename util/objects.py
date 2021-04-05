@@ -16,8 +16,8 @@ class DetectedObject:
         self.area = _area(bounding_box_)
         self.tracker = tracker_
 
-        self.maxDetectionFail = 0
-        self.maxTrackingFail = 0
+        self.num_consecutive_tracking_failures = 0
+        self.num_consecutive_detection_failures = 0
 
         self.counted = False
         self.just_counted = False
