@@ -9,7 +9,7 @@ from imutils.video import FPS
 from default.setup import parser
 from default.setup import gstreamer_pipeline
 from util.TrackAndDetect import Frame
-from .initializer import frame_setup
+from initializer import frame_setup
 
 def main():
     args = parser()
