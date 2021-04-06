@@ -15,7 +15,7 @@ class BoundingBoxFinder:
         self.image_coordinates = []
 
     
-    def extract_coordinates(self, event, x, y, parameters):
+    def extract_coordinates(self, event, x, y,flags, parameters):
         if event == cv2.EVENT_LBUTTONDOWN:
             self.image_coordinates = [(x,y)]
 
