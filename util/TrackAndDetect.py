@@ -117,6 +117,8 @@ class Frame:
         self.classes = _classes
         self.confidences = _confidences
         print(self.classes)
+        print(self.confidences)
+        
         _timer  = cv2.getTickCount()
         
         self.frame = frame
