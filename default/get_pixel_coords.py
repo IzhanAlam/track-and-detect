@@ -7,7 +7,7 @@ import pathlib
 import os
 class BoundingBoxFinder:
     def __init__(self,filepath):
-        self.original_image = cv2,imread(str(filepath))
+        self.original_image = cv2.imread(str(filepath))
         self.copy = self.original_image
 
         cv2.namedWindow('Reference Image')
