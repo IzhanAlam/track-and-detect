@@ -9,6 +9,7 @@ from imutils.video import FPS
 from default.setup import parser
 from default.setup import gstreamer_pipeline
 from util.TrackAndDetect import Frame
+from .initializer import frame_setup
 
 def main():
     args = parser()
@@ -38,45 +39,7 @@ def main():
     W = None
     H = None
 
-    cap = cv2.VideoCapture(args["VIDEO"])
-    ret, frame = cap.read()
-    f_height, f_width, _ = frame.shape
-
-    detection_slowdown = True
-    detection_interval = 3
-    mcdf = 30
-
-    #detector = 'csrt'
-
-    use_droi = False
-    droi = [(0, 0), (f_width, 0), (f_width, f_height), (0, f_height)]
-    show_droi = False
-    confidence_threshold = 0.1
-    sensitive_confidence_threshold = 0.05
-
-    mctf = 30
-    tracker = "csrt"
-
-    duplicate_object_threshold = 0.1
-
-    use_counting_roi = False
-    # [()-left up point ,()- left down point,()- right down point,()- right up point,()]
-    counting_roi = [(10,380), (10,400),(400,400),(400,380)]
-    show_roi_counting = True
-    counting_roi_outside = False
-
-    counting_line_orientation = None
-    counting_line_position = None
-
-    use_object_liveness = False
-    roi_object_liveness = None
-    show_object_liveness = False
-
-    frame_number_counting_color = 4
-    event_api_url = None
-
-    #people_counter = FrameProcessor(frame, tracker, droi, show_droi, mcdf, mctf, detection_interval, counting_line_orientation, counting_line_position,show_roi_counting, counting_roi, counting_roi_outside, frame_number_counting_color,detection_slowdown, roi_object_liveness, show_object_liveness, confidence_threshold, sensitive_confidence_threshold,duplicate_object_threshold, event_api_url)
-    people_counter = Frame(frame,tracker, mcdf, mctf, detection_interval, detection_slowdown, confidence_threshold, sensitive_confidence_threshold, duplicate_object_threshold, counting_line_orientation, counting_line_position, counting_roi, show_roi_counting, counting_roi_outside, roi_object_liveness, show_object_liveness)
+    counter = frame_setup(args["VIDEO"])
 
     while(True):
         frame = cap.read()
@@ -137,8 +100,8 @@ def main():
                 text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
                 cv2.putText(frame, text, (x, y-5), cv2.FONT_HERSHEY_SIMPLEX,0.5, color, 1)
 
-        people_counter.track_and_detect(frame, boxes, confidences, classIDs)
-        output_frame = people_counter.show_result()
+        counter.track_and_detect(frame, boxes, confidences, classIDs)
+        output_frame = counter.show_result()
         
 
         #Display output in a new window

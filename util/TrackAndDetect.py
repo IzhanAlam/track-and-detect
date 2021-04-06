@@ -12,7 +12,7 @@ from shapely.geometry import Point
 
 class Frame:
 
-    def __init__(self, currentframe, tracker, maxDetectionFail, maxTrackingFail, detection_interval,
+    def __init__(self, currentframe, maxDetectionFail, maxTrackingFail, detection_interval,
                 detectEveryFrame, confidenceThreshold, sensConfidenceThreshold,
                 dupConfidenceThreshold, line_orientation, line_position,
                 counting_region, show_counting_region, counting_region_out, 
@@ -22,7 +22,6 @@ class Frame:
         Initial Variables for for class for tracking and detection
         '''
         self.frame = currentframe
-        self.tracker = tracker
         self.frame_height, self.frame_width, _ = self.frame.shape
         self.frame_count = 0
         self.frame_rate_processing = 0
@@ -57,7 +56,7 @@ class Frame:
         '''
         Check object passes a region
         '''
-        self.counting_region = [(10,380), (10,400),(400,400),(400,380),(200,180)]
+        self.counting_region = counting_region
         self.counting_poly = Polygon(self.counting_region) if counting_region else None
         self.counting_region_out = counting_region_out
         self.object_range = object_range if object_range else None
@@ -108,7 +107,7 @@ class Frame:
             del self.objects[object_id]
 
     def detect(self):
-        self.objects = add_new_objects(self.bounding_boxes, self.classes, self.confidences, self.objects, self.frame, self.tracker, self.maxDetectionFail, self.dupConfidenceThreshold)
+        self.objects = add_new_objects(self.bounding_boxes, self.classes, self.confidences, self.objects, self.frame, self.maxDetectionFail, self.dupConfidenceThreshold)
         self.frame_count = 0
 
 

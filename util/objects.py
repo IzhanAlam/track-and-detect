@@ -39,13 +39,13 @@ class DetectedObject:
             self.tracker = tracker_
 
 
-def add_new_objects(boxes, classes, confidences, objects, frame, tracker, mcdf, overlap_threshold):
+def add_new_objects(boxes, classes, confidences, objects, frame, mcdf, overlap_threshold):
 
     matched_object_ids = []
     for i, box in enumerate(boxes):
         type_ = classes[i] if classes is not None else None
         confidence_ = confidences[i] if confidences is not None else None
-        tracker_ = get_tracker(tracker, box, frame)
+        tracker_ = get_tracker(box, frame)
 
         match_found = False
         for _id, object in objects.items():
