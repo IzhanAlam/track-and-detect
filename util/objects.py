@@ -22,6 +22,11 @@ class DetectedObject:
         self.counted = False
         self.just_counted = False
 
+
+        self.mask_on = False
+        self.mask_off = False
+        self.mask_incorrect = False
+
         self.object_color_num_frame = 0
         self.position_first_detected = tuple(self.centroid) 
         self.point_first_detected = Point(self.position_first_detected[0], self.position_first_detected[1])
