@@ -44,8 +44,7 @@ def add_new_objects(boxes, classes, confidences, objects, frame, mcdf, overlap_t
     matched_object_ids = []
     for i, box in enumerate(boxes):
         type_ = classes[i] if classes is not None else None
-        if classes[0]:
-            print('mask')
+        print(classes[i])
         confidence_ = confidences[i] if confidences is not None else None
         tracker_ = get_tracker(box, frame)
 
