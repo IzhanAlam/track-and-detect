@@ -138,21 +138,27 @@ class Frame:
         _timer  = cv2.getTickCount()
         self.frame = frame
 
+    
+        for _id, object in list(self.objects.items()):
+            self.update_object(object, _id)
 
-        if len(self.confidences) > 0:
-            if 1 in self.confidences:
-                for _id, object in list(self.objects.items()):
-                    self.update_object(object, _id)
-        
+            if len(self.confidences) > 0:
+                if 0 in self.confidences:
+                    object.mask_on = True
+                if 1 in self.confidences:
+                    object.mask_off = True
+                if 2 in self.confidences:
+                    object.mask_incorrect = True
+
+
         if self.frame_count >= self.detection_interval:
             self.detect()
         
         self.frame_count += 1
         self.frame_rate_processing = round(cv2.getTickFrequency() / (cv2.getTickCount() - _timer), 2)
             
+            
 
-    
-    
     def count(self, object):
         counted = False
         if self.counting_line:
@@ -160,7 +166,8 @@ class Frame:
                 _pass(_type='line',l_point = object.position_first_detected, c_line = self.counting_line, o_line = self.line_orientation))):
                 object.counted = True
                 counted = True
-
+                print(object.mask_on)
+                print(object.mask_off)
                 if not _pass(_type = 'line', l_point = object.position_first_detected, c_line = self.counting_line, o_line = self.line_orientation):
                     self.person_in += 1
                     data = {'in':True}
@@ -175,6 +182,8 @@ class Frame:
             if not object.counted and (self.counting_poly.contains(object.centroid_point) ^ self.counting_poly.contains(object.point_first_detected)):
                 object.counted = True
                 counted = True
+                print(object.mask_on)
+                print(object.mask_off)
 
                 if _pass(_type='polygon', c_point = object.centroid_point, f_point=object.point_first_detected, r_polygon=self.counting_poly, o_polygon= self.counting_region_out, _enter=True):
                     self.person_in += 1
