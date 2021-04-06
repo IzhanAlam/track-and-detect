@@ -6,6 +6,8 @@ from .objects import add_new_objects
 from .area_check import get_roi_frame, draw_roi
 from .area_check import get_counting_line, _pass
 from .bbox import _centroid
+from .send_request import send_requests
+
 
 from shapely.geometry.polygon import Polygon
 from shapely.geometry import Point
@@ -32,7 +34,6 @@ class Frame:
         self.bounding_boxes = []
         self.classes = []
         self.confidences = []
-        self.count_order = []
     
         '''
         Thresholds
@@ -69,6 +70,10 @@ class Frame:
         self.time_start = time.time()
         self.time_send = 0
         self.time_end = 0
+        self.mask_off_enter = 0
+        self.mask_off_leave = 0
+        self.mask_on_enter = 0
+        self.mask_off_enter = 0
 
         '''
         Visualization Parameters
@@ -111,27 +116,9 @@ class Frame:
         self.objects = add_new_objects(self.bounding_boxes, self.classes, self.confidences, self.objects, self.frame, self.maxDetectionFail, self.dupConfidenceThreshold)
         self.frame_count = 0
 
-
+    
+    
     def track_and_detect(self, frame, _bounding_box, _classes, _confidences):
-        self.bounding_boxes = _bounding_box
-        self.classes = _classes
-        self.confidences = _confidences
-
-        _timer  = cv2.getTickCount()
-        
-        self.frame = frame
-
-        for _id, object in list(self.objects.items()):
-            self.update_object(object, _id)
-        
-        if self.frame_count >= self.detection_interval:
-            self.detect()
-        
-        self.frame_count += 1
-        self.frame_rate_processing = round(cv2.getTickFrequency() / (cv2.getTickCount() - _timer), 2)
-    
-    
-    def additional_track_and_detect(self, frame, _bounding_box, _classes, _confidences):
         self.bounding_boxes = _bounding_box
         self.classes = _classes
         self.confidences = _confidences
@@ -166,14 +153,26 @@ class Frame:
                 _pass(_type='line',l_point = object.position_first_detected, c_line = self.counting_line, o_line = self.line_orientation))):
                 object.counted = True
                 counted = True
-                print(object.mask_on)
-                print(object.mask_off)
                 if not _pass(_type = 'line', l_point = object.position_first_detected, c_line = self.counting_line, o_line = self.line_orientation):
+                    if object.mask_on = True:
+                        self.mask_on_enter = 1
+                    elif object.mask_off = True:
+                        self.mask_off_enter = 1
+                    else:
+                        self.mask_off_enter = 1
                     self.person_in += 1
-                    data = {'in':True}
                 else:
+                    if object.mask_on = True:
+                        self.mask_on_leave = 1
+                    elif object.mask_off = True:
+                        self.mask_off_leave = 1
+                    else:
+                        self.mask_off_leave = 1
                     self.person_out += 1
-                    data = {'out': True}
+                
+                self.time_end = time.time()
+                self.time_send += (self.time_end - self.time_start) / 3600
+                #send_requests({"mask_on_enter":self.mask_on_enter,"mask_on_leave":self.mask_on_leave,"mask_off_enter":self.mask_off_enter"mask_off_leave":self.mask_off_leave,"time":self.time_send})
             
             return counted
         
@@ -182,17 +181,27 @@ class Frame:
             if not object.counted and (self.counting_poly.contains(object.centroid_point) ^ self.counting_poly.contains(object.point_first_detected)):
                 object.counted = True
                 counted = True
-                print(object.mask_on)
-                print(object.mask_off)
-
                 if _pass(_type='polygon', c_point = object.centroid_point, f_point=object.point_first_detected, r_polygon=self.counting_poly, o_polygon= self.counting_region_out, _enter=True):
+                    if object.mask_on = True:
+                        self.mask_on_enter = 1
+                    elif object.mask_off = True:
+                        self.mask_off_enter = 1
+                    else:
+                        self.mask_off_enter = 1
                     self.person_in += 1
-                    self.count_order.append("_In")
-                    data = {'in':True}
                 else:
+                    if object.mask_on = True:
+                        self.mask_on_leave = 1
+                    elif object.mask_off = True:
+                        self.mask_off_leave = 1
+                    else:
+                        self.mask_off_leave = 1
                     self.person_out += 1
-                    self.count_order.append("_Out")
-                    data = {'out':True}
+
+                self.time_end = time.time()
+                self.time_send += (self.time_end - self.time_start) / 3600
+                #send_requests({"mask_on_enter":self.mask_on_enter,"mask_on_leave":self.mask_on_leave,"mask_off_enter":self.mask_off_enter"mask_off_leave":self.mask_off_leave,"time":self.time_send})
+                print(self.mask_on_enter,self.mask_on_leave,self.mask_off_enter,self.mask_off_leave,self.time_send)
 
             return counted
     
