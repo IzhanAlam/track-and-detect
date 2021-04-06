@@ -140,48 +140,16 @@ class Frame:
 
 
         if len(self.confidences) > 0:
-            try:
-                if 0 in self.confidences:
-                    for _id, object in list(self.objects.items()):
-                        self.update_object(object, _id)
+            if 1 in self.confidences:
+                for _id, object in list(self.objects.items()):
+                    self.update_object(object, _id)
         
-                    if self.frame_count >= self.detection_interval:
-                        self.detect()
-
-                    self.frame_count += 1
-                    self.frame_rate_processing = round(cv2.getTickFrequency() / (cv2.getTickCount() - _timer), 2)
-                
-            except:
-                if 1 in self.confidences:
-                    for _id, object in list(self.objects.items()):
-                        self.update_object(object, _id)
+                if self.frame_count >= self.detection_interval:
+                    self.detect()
         
-                    if self.frame_count >= self.detection_interval:
-                        self.detect()
-
-                    self.frame_count += 1
-                    self.frame_rate_processing = round(cv2.getTickFrequency() / (cv2.getTickCount() - _timer), 2)
+                self.frame_count += 1
+                self.frame_rate_processing = round(cv2.getTickFrequency() / (cv2.getTickCount() - _timer), 2)
             
-            else:
-                if (3 or 4) in self.confidences:
-                    for _id, object in list(self.objects.items()):
-                        self.update_object(object, _id)
-        
-                    if self.frame_count >= self.detection_interval:
-                        self.detect()
-
-                    self.frame_count += 1
-                    self.frame_rate_processing = round(cv2.getTickFrequency() / (cv2.getTickCount() - _timer), 2)
-
-            
-
-
-                
-
-
-
-
-
 
     
     
