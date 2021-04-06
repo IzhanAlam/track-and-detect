@@ -6,5 +6,5 @@ def csrt_create(bounding_box, frame):
     return tracker
     
 
-def get_tracker(algorithm, bounding_box, frame):
+def get_tracker(bounding_box, frame):
     return csrt_create(bounding_box, frame)
