@@ -182,17 +182,17 @@ class Frame:
                 object.counted = True
                 counted = True
                 if _pass(_type='polygon', c_point = object.centroid_point, f_point=object.point_first_detected, r_polygon=self.counting_poly, o_polygon= self.counting_region_out, _enter=True):
-                    if object.mask_on = True:
+                    if object.mask_on == True:
                         self.mask_on_enter = 1
-                    elif object.mask_off = True:
+                    elif object.mask_off == True:
                         self.mask_off_enter = 1
                     else:
                         self.mask_off_enter = 1
                     self.person_in += 1
                 else:
-                    if object.mask_on = True:
+                    if object.mask_on == True:
                         self.mask_on_leave = 1
-                    elif object.mask_off = True:
+                    elif object.mask_off == True:
                         self.mask_off_leave = 1
                     else:
                         self.mask_off_leave = 1
