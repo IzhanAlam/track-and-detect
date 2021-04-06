@@ -154,17 +154,17 @@ class Frame:
                 object.counted = True
                 counted = True
                 if not _pass(_type = 'line', l_point = object.position_first_detected, c_line = self.counting_line, o_line = self.line_orientation):
-                    if object.mask_on = True:
+                    if object.mask_on == True:
                         self.mask_on_enter = 1
-                    elif object.mask_off = True:
+                    elif object.mask_off == True:
                         self.mask_off_enter = 1
                     else:
                         self.mask_off_enter = 1
                     self.person_in += 1
                 else:
-                    if object.mask_on = True:
+                    if object.mask_on == True:
                         self.mask_on_leave = 1
-                    elif object.mask_off = True:
+                    elif object.mask_off == True:
                         self.mask_off_leave = 1
                     else:
                         self.mask_off_leave = 1
