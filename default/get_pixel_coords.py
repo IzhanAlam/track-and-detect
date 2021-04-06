@@ -4,7 +4,7 @@ Function to help get coordinates for entry/exit pass points
 
 import cv2
 import pathlib
-
+import os
 class BoundingBoxFinder:
     def __init__(self,filepath):
         self.original_image = cv2,imread(str(filepath))
