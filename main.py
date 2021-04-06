@@ -55,15 +55,10 @@ def main():
 
 
         frame = imutils.resize(frame, width = 416)
-        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
         if W is None or H is None:
             (H, W) = frame.shape[:2]
 
-
-        
-        status = "Waiting"
-        rects = []
 
 
         boxes = []
