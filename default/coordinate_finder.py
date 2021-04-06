@@ -1,5 +1,5 @@
 import cv2
-from get_pixel_coordinates import BoundingBoxFinder, TakeScreenshot
+from .get_pixel_coordinates import BoundingBoxFinder, TakeScreenshot
 from setup import parser
 
 '''
