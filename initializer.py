@@ -2,10 +2,8 @@ from util.TrackAndDetect import Frame
 import cv2
 
 
-def frame_setup(path):
+def frame_setup(frame):
 
-    cap = cv2.VideoCapture(path)
-    _, frame = cap.read()
 
     '''
     Region which we are detecting in and detection parameters
