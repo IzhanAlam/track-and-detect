@@ -36,10 +36,13 @@ def main():
     ln = net.getLayerNames()
     ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
+    cap = cv2.VideoCapture(args['VIDEO'])
+    _, frame = cap.read()
+
     W = None
     H = None
 
-    counter = frame_setup(args["VIDEO"])
+    counter = frame_setup(frame)
 
     while(True):
         frame = cap.read()
