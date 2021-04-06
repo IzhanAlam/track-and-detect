@@ -73,7 +73,7 @@ class Frame:
         self.mask_off_enter = 0
         self.mask_off_leave = 0
         self.mask_on_enter = 0
-        self.mask_off_enter = 0
+        self.mask_on_leave = 0
 
         '''
         Visualization Parameters
