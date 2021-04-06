@@ -172,7 +172,7 @@ class Frame:
                 
                 self.time_end = time.time()
                 self.time_send += (self.time_end - self.time_start) / 3600
-                #send_requests({"mask_on_enter":self.mask_on_enter,"mask_on_leave":self.mask_on_leave,"mask_off_enter":self.mask_off_enter"mask_off_leave":self.mask_off_leave,"time":self.time_send})
+                send_requests({"mask_on_enter":self.mask_on_enter,"mask_on_leave":self.mask_on_leave,"mask_off_enter":self.mask_off_enter,"mask_off_leave":self.mask_off_leave,"time":self.time_send})
             
             return counted
         
@@ -200,8 +200,8 @@ class Frame:
 
                 self.time_end = time.time()
                 self.time_send += (self.time_end - self.time_start) / 3600
-                #send_requests({"mask_on_enter":self.mask_on_enter,"mask_on_leave":self.mask_on_leave,"mask_off_enter":self.mask_off_enter"mask_off_leave":self.mask_off_leave,"time":self.time_send})
-                print(self.mask_on_enter,self.mask_on_leave,self.mask_off_enter,self.mask_off_leave,self.time_send)
+                send_requests({"mask_on_enter":self.mask_on_enter,"mask_on_leave":self.mask_on_leave,"mask_off_enter":self.mask_off_enter,"mask_off_leave":self.mask_off_leave,"time":self.time_send})
+                #print(self.mask_on_enter,self.mask_on_leave,self.mask_off_enter,self.mask_off_leave,self.time_send)
 
             return counted
     

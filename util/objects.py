@@ -23,9 +23,9 @@ class DetectedObject:
         self.just_counted = False
 
 
-        self.mask_on = False
-        self.mask_off = False
-        self.mask_incorrect = False
+        self.mask_on = 0
+        self.mask_off = 0
+        self.mask_incorrect = 0
 
         self.object_color_num_frame = 0
         self.position_first_detected = tuple(self.centroid) 
