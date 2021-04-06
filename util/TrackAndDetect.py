@@ -107,6 +107,7 @@ class Frame:
             del self.objects[object_id]
 
     def detect(self):
+        # [0,1,2,3,4] -> [with mask, no mask, incorrect mask, person, person-like]
         self.objects = add_new_objects(self.bounding_boxes, self.classes, self.confidences, self.objects, self.frame, self.maxDetectionFail, self.dupConfidenceThreshold)
         self.frame_count = 0
 
@@ -115,7 +116,7 @@ class Frame:
         self.bounding_boxes = _bounding_box
         self.classes = _classes
         self.confidences = _confidences
-
+        print(self.classes)
         _timer  = cv2.getTickCount()
         
         self.frame = frame
