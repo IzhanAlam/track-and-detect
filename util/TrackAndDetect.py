@@ -177,8 +177,6 @@ class Frame:
             (x, y, w, h) = [int(v) for v in object.bounding_box]
             # blue color to the box
             color = blue
-            print(self.counting_poly.contains(object.centroid_point))
-            print(self.counting_poly.contains(object.point_first_detected))
             if object.counted and not object.just_counted:
                 color = green
                 counting_roi_color = green
@@ -206,14 +204,12 @@ class Frame:
         cv2.putText(frame, 'Count out: ' + str(self.person_out) + types_counts_str, (20, 120), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
         cv2.putText(frame, 'Processing speed: ' + str(self.frame_rate_processing) + ' FPS', (20, 180), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
 
-        # show counting roi
         if self.show_counting:
             if self.roi_color_num_frame > 0:
                 counting_roi_color = green
                 self.roi_color_num_frame -= 1
             frame = draw_roi(frame, self.counting_region, counting_roi_color)
 
-        # show liveness roi
         if self.show_object_range and self.object_range:
             frame = draw_roi(frame, self.object_range, blue)
         
