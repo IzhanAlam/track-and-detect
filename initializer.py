@@ -40,7 +40,7 @@ def frame_setup(frame):
 
     count_by_poly = True
     show_poly = True
-    poly_outside = False
+    poly_outside = True
     if count_by_poly:
         x,y,w,h = get_box()
         poly_points =  [(x,y+h),(x+w, y+h), (x+w,y), (x, y)]
@@ -50,7 +50,7 @@ def frame_setup(frame):
     '''
     Tracking Range
     '''
-    set_obj_range = False
+    set_obj_range = True
     if set_obj_range:
         x,y,w,h = get_box()
         obj_range =  [(x,y+h),(x+w, y+h), (x+w,y), (x, y)]
