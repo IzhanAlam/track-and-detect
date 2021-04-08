@@ -22,8 +22,9 @@ filepath = 'images/TestImage.jpg'
 finder = BoundingBoxFinder(filepath)
 
 while True:
+
     cv2.imshow('Reference Image', finder.show_image())
-    print(finder.get_bbox)
+    print(finder.show_image())
     key = cv2.waitKey(1)
     # Close program with keyboard 'q'
     if key == ord('q'):
