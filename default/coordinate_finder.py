@@ -32,10 +32,15 @@ def get_box():
         '''
         Upon exiting get the coordinates of the last bounding box
         '''
-        if key == ord('q'):
-            return finder.x, finder.y, finder.w, finder.h
-            cv2.destroyAllWindows()
-            exit(1)
+        
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    
+    return finder.x, finder.y, finder.w, finder.h
+    
+    cap.release()
+    cv2.destroyAllWindows
+
 
 
 
