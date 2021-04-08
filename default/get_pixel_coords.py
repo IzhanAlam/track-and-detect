@@ -33,6 +33,8 @@ class BoundingBoxFinder:
             self.w = self.image_coordinates[1][0] - self.image_coordinates[0][0]
             self.h = self.image_coordinates[1][1] - self.image_coordinates[0][1]
 
+            return self.x,self.y,self.w,self.h
+
             cv2.rectangle(self.copy, self.image_coordinates[0], self.image_coordinates[1], (36,255,12), 2)
             cv2.imshow("Reference Image", self.copy)
         
@@ -41,7 +43,7 @@ class BoundingBoxFinder:
     
     def show_image(self):
         #return a copy of the img, the x,y,w,h
-        return self.copy, self.x,self.y,self.w,self.h
+        return self.copy
     
 
 
