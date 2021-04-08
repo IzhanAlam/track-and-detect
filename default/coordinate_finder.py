@@ -1,6 +1,6 @@
 import cv2
 from .get_pixel_coords import BoundingBoxFinder, TakeScreenshot
-from setup import parser
+from .setup import parser
 
 def get_box():
 
