@@ -1,4 +1,5 @@
 from util.TrackAndDetect import Frame
+from default.coordinate_finder import get_box
 import cv2
 
 
@@ -40,7 +41,7 @@ def frame_setup(frame):
     show_poly = True
     poly_outside = False
     if count_by_poly:
-        poly_points =  [(10,380), (10,400),(400,400),(400,380),(200,180)]
+        poly_points =  [(121,117),(214,169)]
     else:
         poly_points = None
     
