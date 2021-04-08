@@ -21,18 +21,14 @@ Get bounding box/pixel positions
 filepath = 'images/TestImage.jpg'
 finder = BoundingBoxFinder(filepath)
 
-while True:
-    img, x,y,w,h = finder.show_image()
-    cv2.imshow('Reference Image', img)
-    print(x)
-    print(y)
-    print(w)
-    print(h)
-    key = cv2.waitKey(1)
-    # Close program with keyboard 'q'
-    if key == ord('q'):
-        cv2.destroyAllWindows()
-        exit(1)
+
+img, x,y,w,h = finder.show_image()
+cv2.imshow('Reference Image', img)
+print(x)
+print(y)
+print(w)
+print(h)
+
 
 
     
