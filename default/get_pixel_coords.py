@@ -14,7 +14,11 @@ class BoundingBoxFinder:
         cv2.setMouseCallback('Reference Image', self.extract_coordinates)
         self.image_coordinates = []
 
-    
+        self.x  = None
+        self.y = None
+        self.w = None
+        self.h = None
+
     def extract_coordinates(self, event, x, y,flags, parameters):
         if event == cv2.EVENT_LBUTTONDOWN:
             self.image_coordinates = [(x,y)]
@@ -24,6 +28,11 @@ class BoundingBoxFinder:
             print('top left: {}, bottom right: {}'.format(self.image_coordinates[0], self.image_coordinates[1]))
             print('x,y,w,h : ({}, {}, {}, {})'.format(self.image_coordinates[0][0], self.image_coordinates[0][1], self.image_coordinates[1][0] - self.image_coordinates[0][0], self.image_coordinates[1][1] - self.image_coordinates[0][1]))
 
+            self.x = self.image_coordinates[0][0]
+            self.y = self.image_coordinates[0][1]
+            self.w = self.image_coordinates[1][0] - self.image_coordinates[0][0]
+            self.h = self.image_coordinates[1][1] - self.image_coordinates[0][1]
+
             cv2.rectangle(self.copy, self.image_coordinates[0], self.image_coordinates[1], (36,255,12), 2)
             cv2.imshow("Reference Image", self.copy)
         
@@ -32,7 +41,7 @@ class BoundingBoxFinder:
     
     def show_image(self):
         #return a copy of the img, the x,y,w,h
-        return self.copy, self.image_coordinates[0][0], self.image_coordinates[0][1], self.image_coordinates[1][0] - self.image_coordinates[0][0], self.image_coordinates[1][1] - self.image_coordinates[0][1]
+        return self.copy, self.x,self.y,self.w,self.h
     
 
 
