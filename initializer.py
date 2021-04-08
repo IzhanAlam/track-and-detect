@@ -43,7 +43,7 @@ def frame_setup(frame):
     poly_outside = False
     if count_by_poly:
         x,y,w,h = get_box()
-        poly_points =  [(x,y),(x+w, y+h), (w, y), (x,h)]
+        poly_points =  [(x,y),(x+w, y+h), (x, w), (y,h)]
     else:
         poly_points = None
     
