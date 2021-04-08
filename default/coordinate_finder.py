@@ -27,17 +27,21 @@ def get_box():
         cv2.imshow('Reference Image', img)
 
     
-        key = cv2.waitKey(1)
+        
         # Close program with keyboard 'q'
         '''
         Upon exiting get the coordinates of the last bounding box
         '''
-
-        
-        if key == ord('q'):
-            return finder.x, finder.y, finder.w, finder.h
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    
+    
     cap.release()
     cv2.destroyAllWindows
+    return finder.x, finder.y, finder.w, finder.h
+
+
+        
 
 
 
