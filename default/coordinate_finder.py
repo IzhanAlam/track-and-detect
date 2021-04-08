@@ -8,8 +8,8 @@ def get_box():
     first take a screenshot
     '''
     args = parser()
-    cap = cv2.VideoCapture(args['VIDEO'])
-    _, frame = cap.read()
+    cap_ = cv2.VideoCapture(args['VIDEO'])
+    _, frame = cap_.read()
 
     W = None
     H = None
@@ -36,8 +36,8 @@ def get_box():
             break
     
     
-    cap.release()
-    cv2.destroyAllWindows
+    cap_.release()
+    cv2.destroyAllWindows()
     return finder.x, finder.y, finder.w, finder.h
 
 
