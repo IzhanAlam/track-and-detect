@@ -30,6 +30,7 @@ while True:
     key = cv2.waitKey(1)
     # Close program with keyboard 'q'
     if key == ord('q'):
+        print(finder.x)
         cv2.destroyAllWindows()
         exit(1)
 
