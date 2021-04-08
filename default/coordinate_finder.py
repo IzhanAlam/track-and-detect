@@ -22,9 +22,9 @@ filepath = 'images/TestImage.jpg'
 finder = BoundingBoxFinder(filepath)
 
 while True:
-
-    cv2.imshow('Reference Image', finder.show_image())
-    print(finder.show_image())
+    img, coordinates = finder.show_image()
+    cv2.imshow('Reference Image', img)
+    print(coordinates)
     key = cv2.waitKey(1)
     # Close program with keyboard 'q'
     if key == ord('q'):
