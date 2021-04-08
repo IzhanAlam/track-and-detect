@@ -34,7 +34,6 @@ while True:
         exit(1)
 
 
-    
 print(finder.x)
 print(finder.y)
 print(finder.w)
