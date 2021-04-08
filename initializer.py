@@ -1,5 +1,5 @@
 from util.TrackAndDetect import Frame
-#from default.coordinate_finder import get_box
+from default.coordinate_finder import get_box
 import cv2
 
 
@@ -37,11 +37,13 @@ def frame_setup(frame):
     '''
     Paramaters to setup a polygon for entry/exit point
     '''
+
     count_by_poly = True
     show_poly = True
     poly_outside = False
     if count_by_poly:
-        poly_points =  [(121,117),(214,169)]
+        x,y,w,h = get_box()
+        poly_points =  [(x,y),(x+w, y+h), (w, y), (x,h)]
     else:
         poly_points = None
     

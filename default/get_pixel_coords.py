@@ -40,8 +40,6 @@ class BoundingBoxFinder:
         elif event == cv2.EVENT_RBUTTONDOWN:
             self.copy = self.original_image.copy()
     
-    def show_points(self):
-        return self.x, self.y, self.w, self.h
 
     def show_image(self):
         #return a copy of the img, the x,y,w,h
