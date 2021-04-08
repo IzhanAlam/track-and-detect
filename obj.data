@@ -1,5 +1,0 @@
-classes = 5
-train = /darknet/custom_data/train.txt
-valid = /darknet/custom_data/test.txt
-names = /darknet/custom_data/obj.names
-backup = /darknet/backup
