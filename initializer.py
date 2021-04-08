@@ -50,9 +50,10 @@ def frame_setup(frame):
     '''
     Tracking Range
     '''
-    set_obj_range = True
+    set_obj_range = False
     if set_obj_range:
-        obj_range = [(10,380), (10,400),(400,400),(400,380),(200,180)]
+        x,y,w,h = get_box()
+        obj_range =  [(x,y+h),(x+w, y+h), (x+w,y), (x, y)]
         show_obj_range = True
     else:
         obj_range = None
