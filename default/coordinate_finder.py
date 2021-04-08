@@ -25,10 +25,7 @@ while True:
     img = finder.show_image()
     cv2.imshow('Reference Image', img)
     
-    print(finder.x)
-    print(finder.y)
-    print(finder.w)
-    print(finder.h)
+
     
     key = cv2.waitKey(1)
     # Close program with keyboard 'q'
@@ -38,5 +35,8 @@ while True:
 
 
     
-
+print(finder.x)
+print(finder.y)
+print(finder.w)
+print(finder.h)
 
