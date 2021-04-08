@@ -39,7 +39,7 @@ def frame_setup(frame):
     '''
 
     count_by_poly = True
-    show_poly = True
+    show_poly = False
     poly_outside = True
     if count_by_poly:
         x,y,w,h = get_box()
