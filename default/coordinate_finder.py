@@ -36,7 +36,8 @@ def get_box():
         
         if key == ord('q'):
             return finder.x, finder.y, finder.w, finder.h
-    cv2.destroyAllWindows()
+    cap.release()
+    cv2.destroyAllWindows
 
 
 
