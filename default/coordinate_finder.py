@@ -25,7 +25,6 @@ def get_box():
     while True:
         img = finder.show_image()
         cv2.imshow('Reference Image', img)
-        finder.show_points()
 
     
         key = cv2.waitKey(1)
