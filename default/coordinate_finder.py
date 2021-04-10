@@ -9,7 +9,9 @@ def get_box():
     '''
     args = parser()
     cap_ = cv2.VideoCapture(args['VIDEO'])
-    _, frame = cap_.read()
+    ret, frame = cap_.read()
+
+    print(ret)
 
     W = None
     H = None
