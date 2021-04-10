@@ -230,7 +230,7 @@ class Frame:
                 color = green
                 object.object_color_num_frame -= 1
 
-            cv2.circle(frame, (round((x + x + w)/2),round((y+y+h)/2)), 2, (0,0,0), 2)
+            cv2.circle(frame, (round((x + x + w)/2),round((y+y+h)/2)), 2, (255,0,0), 2)
             people_label = 'ID: ' + _id[:8] \
                             if object.type == None \
                             else 'ID: {0}, {1} ({2}%)'.format(_id[:3], object.type, str(object.type_confidence*100)[:2])
