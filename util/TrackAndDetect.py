@@ -232,7 +232,7 @@ class Frame:
             people_label = 'ID: ' + _id[:8] \
                             if object.type == None \
                             else 'ID: {0}, {1} ({2}%)'.format(_id[:8], object.type, str(round(object.type_confidence*100,2))[:4])
-            cv2.putText(frame, people_label, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, 0.5, color, 0.5, cv2.LINE_AA)
+            cv2.putText(frame, people_label, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, 0.5, color, 1, cv2.LINE_AA)
 
         # draw counting line
         if self.counting_line is not None and self.counting_region is None:
@@ -240,14 +240,14 @@ class Frame:
 
         # Display mask/people count
 
-        cv2.putText(frame, 'Masks worn in entry: ' + str(self.mask_on_enter), (20, 60), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
-        cv2.putText(frame, 'Masks not worn in entry: ' + str(self.mask_off_enter), (20, 70), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Masks worn in entry: ' + str(self.mask_on_enter), (10, 10), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Masks not worn in entry: ' + str(self.mask_off_enter), (10, 25), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
 
-        cv2.putText(frame, 'Masks worn in exit: ' + str(self.mask_on_enter), (20, 80), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
-        cv2.putText(frame, 'Masks not worn in exit: ' + str(self.mask_off_enter), (20, 90), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Masks worn in exit: ' + str(self.mask_on_enter), (10, 40), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Masks not worn in exit: ' + str(self.mask_off_enter), (10, 55), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
 
-        cv2.putText(frame, 'Count in: ' + str(self.person_in), (20, 100), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
-        cv2.putText(frame, 'Count out: ' + str(self.person_out), (20, 110), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Count in: ' + str(self.person_in), (20, 70), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Count out: ' + str(self.person_out), (20, 85), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
         #cv2.putText(frame, 'Processing speed: ' + str(self.frame_rate_processing) + ' FPS', (20, 180), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
 
         if self.show_counting:
