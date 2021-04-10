@@ -64,8 +64,14 @@ def get_line(orientation):
     while True:
         img = finder.show_image()
         cv2.imshow('Reference Image', img)
+        
+        frame = cap.read()
+        frame = frame[1]
 
-    
+        frame = imutils.resize(frame, width = 416)
+
+        if W is None or H is None:
+            (H, W) = frame.shape[:2]
         
         # Close program with keyboard 'q'
         '''
