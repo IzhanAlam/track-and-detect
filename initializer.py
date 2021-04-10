@@ -1,26 +1,30 @@
 from util.TrackAndDetect import Frame
 from default.coordinate_finder import get_box
+from gui import qtWindow
+
 import cv2
 
 
 def frame_setup(frame):
 
 
+    qtWindow()
+
     '''
     Region which we are detecting in and detection parameters
     '''
     
-    confidence_threshold = 0.1 #confidence of detections
-    sensitive_confidence_threshold = 0.05 #more sensitive confidence
-    maxDetectFail = 30 #Number of frames before an object is no considered no longer to be in frame
-    detection_interval = 3 #Number of frames object detection is carried out
-    slower_detection = True #Changes detection interval to one when no one is in the frame
+    confidence_threshold = qtWindow.form.doubleSpinBox.value() #confidence of detections
+    sensitive_confidence_threshold = qtWindow.form.doubleSpinBox_2.value() #more sensitive confidence
+    maxDetectFail = qtWindow.form.spinBox_4.value() #Number of frames before an object is no considered no longer to be in frame
+    detection_interval = qtWindow.form.spinBox_3.value() #Number of frames object detection is carried out
+    slower_detection = qtWindow.form.checkBox_4.isChecked() #Changes detection interval to one when no one is in the frame
     
     '''
     Tracking paramaeters (tracker used: csrt)
     '''
-    maxTrackFail = 5 #Number of frames before the object is determined to have left the frame
-    duplicate_object_threshold = 0.1 #Remove objects with overlap at this threshold
+    maxTrackFail = qtWindow.form.spinBox_5.value() #Number of frames before the object is determined to have left the frame
+    duplicate_object_threshold = qtWindow.form.doubleSpinBox_3.value() #Remove objects with overlap at this threshold
 
 
     '''
@@ -39,8 +43,8 @@ def frame_setup(frame):
     '''
 
     count_by_poly = True
-    show_poly = True
-    poly_outside = True
+    show_poly = qtWindow.form.doubleSpinBox_3.value()
+    poly_outside = qtWindow.form.checkBox_3.isChecked()
     if count_by_poly:
         x,y,w,h = get_box()
         poly_points =  [(x,y+h),(x+w, y+h), (x+w,y), (x, y)]
@@ -50,7 +54,7 @@ def frame_setup(frame):
     '''
     Tracking Range
     '''
-    set_obj_range = True
+    set_obj_range =  qtWindow.form.checkBox_2.isChecked()
     if set_obj_range:
         x,y,w,h = get_box()
         obj_range =  [(x,y+h),(x+w, y+h), (x+w,y), (x, y)]
