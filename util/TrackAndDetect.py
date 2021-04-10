@@ -213,6 +213,8 @@ class Frame:
         color = blue
         counting_roi_color = yellow
 
+        text_color = (193, 193, 215)
+
         # draw and label object bounding boxes
         for _id, object in self.objects.items():
             (x, y, w, h) = [int(v) for v in object.bounding_box]
@@ -240,14 +242,14 @@ class Frame:
 
         # Display mask/people count
 
-        cv2.putText(frame, 'Masks worn in entry: ' + str(self.mask_on_enter), (10, 20), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
-        cv2.putText(frame, 'Masks not worn in entry: ' + str(self.mask_off_enter), (10, 35), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Masks worn in entry: ' + str(self.mask_on_enter), (10, 20), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Masks not worn in entry: ' + str(self.mask_off_enter), (10, 35), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
 
-        cv2.putText(frame, 'Masks worn in exit: ' + str(self.mask_on_enter), (10, 50), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
-        cv2.putText(frame, 'Masks not worn in exit: ' + str(self.mask_off_enter), (10, 65), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Masks worn in exit: ' + str(self.mask_on_leave), (10, 50), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Masks not worn in exit: ' + str(self.mask_off_leave), (10, 65), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
 
-        cv2.putText(frame, 'Count in: ' + str(self.person_in), (10, 80), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
-        cv2.putText(frame, 'Count out: ' + str(self.person_out), (10, 95), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Count in: ' + str(self.person_in), (10, 80), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Count out: ' + str(self.person_out), (10, 95), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
         #cv2.putText(frame, 'Processing speed: ' + str(self.frame_rate_processing) + ' FPS', (20, 180), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
 
         if self.show_counting:
