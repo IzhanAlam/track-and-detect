@@ -244,7 +244,7 @@ class Frame:
             cv2.circle(frame, (round((x + x + w)/2),round((y+y+h)/2)), 2, (255,0,0), 2)
             people_label = 'ID: ' + _id[:8] \
                             if object.type == None \
-                            else 'ID: {0}, {1} ({2}%)'.format(_id[:3], self.get_object(object.type_confidence), str(object.type*100)[:4])
+                            else 'ID: {0}, {1} ({2}%)'.format(_id[:8], self.get_object(object.type_confidence), str(object.type*100)[:4])
             
             cv2.putText(frame, people_label, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, 0.5, color, 1, cv2.LINE_AA)
 

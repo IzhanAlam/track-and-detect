@@ -38,12 +38,11 @@ def main():
 
     cap = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap.read()
-    print("STARTING...")
     W = None
     H = None
 
     counter = frame_setup(frame)
-
+    print("STARTING...setting up detection and tracking...")
     while(True):
         frame = cap.read()
         frame = frame[1]
