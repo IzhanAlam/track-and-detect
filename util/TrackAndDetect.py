@@ -244,7 +244,7 @@ class Frame:
             cv2.circle(frame, (round((x + x + w)/2),round((y+y+h)/2)), 2, (255,0,0), 2)
             people_label = 'ID: ' + _id[:8] \
                             if object.type == None \
-                            else 'ID: {0}, {1} ({2}%)'.format(_id[:3], self.get_object(object.type_confidence), str(round(object.type*100),2)[:4])
+                            else 'ID: {0}, {1} ({2}%)'.format(_id[:3], self.get_object(object.type_confidence), str(object.type*100)[:4])
             
             cv2.putText(frame, people_label, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, 0.5, color, 1, cv2.LINE_AA)
 
@@ -262,7 +262,7 @@ class Frame:
 
         cv2.putText(frame, 'Count in: ' + str(self.person_in), (10, 80), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
         cv2.putText(frame, 'Count out: ' + str(self.person_out), (10, 95), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
-        cv2.putText(frame, 'Frame Processing Speed: ' + str(self.frame_rate_processing) + ' FPS', (self.frame_width - 200, self.frame_height - 20), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Frame Processing Speed: ' + str(self.frame_rate_processing) + ' FPS', (self.frame_width - 300, self.frame_height - 20), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
 
         if self.show_counting:
             if self.roi_color_num_frame > 0:

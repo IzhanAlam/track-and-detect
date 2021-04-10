@@ -38,7 +38,7 @@ def main():
 
     cap = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap.read()
-
+    print("STARTING...")
     W = None
     H = None
 
