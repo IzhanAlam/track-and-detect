@@ -51,7 +51,7 @@ def TakeScreenshot(frame,filename):
     screenshots_directory = 'images/'
     pathlib.Path(screenshots_directory).mkdir(parents=True, exist_ok=True)
     screenshot_path = os.path.join(screenshots_directory, str(filename) +  '.jpg')
-    cv2.imwrite(screenshot_path,frame)
+    cv2.imwrite(screenshot_path,frame, [cv2.IMWRITE_JPEG_QUALITY, 80])
 
 
 

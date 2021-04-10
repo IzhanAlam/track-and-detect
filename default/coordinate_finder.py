@@ -14,7 +14,9 @@ def get_box():
     W = None
     H = None
 
-    TakeScreenshot(frame,'TestImage')
+
+    cv2.imwrite('TestImage',frame)
+    #TakeScreenshot(frame,'TestImage')
 
     '''
     Get bounding box/pixel positions
