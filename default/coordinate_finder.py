@@ -68,7 +68,7 @@ def get_line(orientation):
         frame = cap_.read()
         frame = frame[1]
 
-        frame = imutils.resize(frame, width = 416)
+        
 
         if W is None or H is None:
             (H, W) = frame.shape[:2]
