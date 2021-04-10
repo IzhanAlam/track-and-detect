@@ -3,3 +3,4 @@ requests==2.18.4
 Shapely==1.7.1
 numpy==1.13.3
 PyQt5==5.15.4
+opencv2==4.4.0
