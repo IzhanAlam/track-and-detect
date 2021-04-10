@@ -30,7 +30,6 @@ class Frame:
         self.person_in = 0
         self.person_out = 0
         self.objects = OrderedDict()
-        self.types_counts = OrderedDict()
         self.bounding_boxes = []
         self.classes = []
         self.confidences = []
@@ -229,22 +228,27 @@ class Frame:
                 color = green
                 object.object_color_num_frame -= 1
 
-            cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
+            cv2.circle(frame, (x, y), 2, (0,0,0), 2)
             people_label = 'ID: ' + _id[:8] \
                             if object.type == None \
-                            else 'ID: {0}, {1} ({2}%)'.format(_id[:8], object.type, str(object.type_confidence*100)[:4])
-            cv2.putText(frame, people_label, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, 0.5, color, 2, cv2.LINE_AA)
+                            else 'ID: {0}, {1} ({2}%)'.format(_id[:8], object.type, str(round(object.type_confidence*100,2))[:4])
+            cv2.putText(frame, people_label, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, 0.5, color, 0.5, cv2.LINE_AA)
 
         # draw counting line
         if self.counting_line is not None and self.counting_region is None:
             cv2.line(frame, self.counting_line[0], self.counting_line[1], color, 3)
 
-        # display people count
-        types_counts_str = ', '.join([': '.join(map(str, i)) for i in self.types_counts.items()])
-        types_counts_str = ' (' + types_counts_str + ')' if types_counts_str != '' else types_counts_str
-        cv2.putText(frame, 'Count in: ' + str(self.person_in) + types_counts_str, (20, 60), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
-        cv2.putText(frame, 'Count out: ' + str(self.person_out) + types_counts_str, (20, 120), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
-        cv2.putText(frame, 'Processing speed: ' + str(self.frame_rate_processing) + ' FPS', (20, 180), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
+        # Display mask/people count
+
+        cv2.putText(frame, 'Masks worn in entry: ' + str(self.mask_on_enter), (20, 60), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 0.5, cv2.LINE_AA)
+        cv2.putText(frame, 'Masks not worn in entry: ' + str(self.mask_off_enter), (20, 70), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 0.5, cv2.LINE_AA)
+
+        cv2.putText(frame, 'Masks worn in exit: ' + str(self.mask_on_enter), (20, 80), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 0.5, cv2.LINE_AA)
+        cv2.putText(frame, 'Masks not worn in exit: ' + str(self.mask_off_enter), (20, 90), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 0.5, cv2.LINE_AA)
+
+        cv2.putText(frame, 'Count in: ' + str(self.person_in), (20, 100), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 0.5, cv2.LINE_AA)
+        cv2.putText(frame, 'Count out: ' + str(self.person_out), (20, 110), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 0.5, cv2.LINE_AA)
+        #cv2.putText(frame, 'Processing speed: ' + str(self.frame_rate_processing) + ' FPS', (20, 180), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
 
         if self.show_counting:
             if self.roi_color_num_frame > 0:
