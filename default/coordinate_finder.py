@@ -65,7 +65,7 @@ def get_line(orientation):
         img = finder.show_image()
         cv2.imshow('Reference Image', img)
         
-        frame = cap.read()
+        frame = cap_.read()
         frame = frame[1]
 
         frame = imutils.resize(frame, width = 416)
