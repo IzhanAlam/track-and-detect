@@ -30,10 +30,24 @@ def frame_setup(frame):
     '''
     Parameters to setup line for entry/exit point
     '''
-    count_by_line = False
+    count_by_line = qtWindow.form.radioButton_5.isChecked()
+
+    qtWindow.form.radioButton.isChecked()
+
     if count_by_line:
-        line_orientation = 'bottom'
-        line_position = 0.1
+        if qtWindow.form.radioButton.isChecked():
+            line_orientation = 'right'
+            line_position = get_line('right')
+        elif  qtWindow.form.radioButton_3.isChecked():
+            line_orientation = 'left'
+            line_position = get_line('left')
+        elif  qtWindow.form.radioButton_2.isChecked():
+            line_orientation = 'top'
+            line_position = get_line('top')
+        elif  qtWindow.form.radioButton_4.isChecked():
+            line_orientation = 'bottom'
+            line_position = get_line('bottom')
+            
     else:
         line_orientation = None
         line_position = None
@@ -42,8 +56,8 @@ def frame_setup(frame):
     Paramaters to setup a polygon for entry/exit point
     '''
 
-    count_by_poly = True
-    show_poly = qtWindow.form.doubleSpinBox_3.value()
+    count_by_poly = qtWindow.form.radioButton_7.isChecked()
+    show_poly = qtWindow.form.radioButton_7.isChecked()
     poly_outside = qtWindow.form.checkBox_3.isChecked()
     if count_by_poly:
         x,y,w,h = get_box()
