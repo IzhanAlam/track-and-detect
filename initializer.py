@@ -1,5 +1,5 @@
 from util.TrackAndDetect import Frame
-from default.coordinate_finder import get_box
+from default.coordinate_finder import get_box, get_line
 from gui import qtWindow
 
 import cv2
