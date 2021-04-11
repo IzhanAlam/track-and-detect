@@ -10,31 +10,12 @@ def get_box():
     first take a screenshot
     '''
     args = parser()
+    args['VIDEO'] = "/tracking-only/test.mp4"
     cap_ = cv2.VideoCapture(args['VIDEO'])
+    _, frame = cap_.read()
+
     W = None
     H = None
-
-    while(True):
-        grabbed, frame = cap_.read()
-        if not grabbed:
-            print("END")
-            break
-            
-        if W is None or H is None:
-            (H,W) = frame.shape[:2]
-        
-        #Display output in a new window
-        cv2.imshow('Video',frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
-    cap_.release()
-    cv2.destroyAllWindows
-            
-
-    
-
-
 
     TakeScreenshot(frame,'TestImage')
 
@@ -62,6 +43,10 @@ def get_box():
         '''
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+    
+    
+    cap_.release()
+    cv2.destroyAllWindows()
     
     
     cap_.release()
