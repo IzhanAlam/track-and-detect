@@ -8,7 +8,7 @@ from imutils.video import VideoStream
 def get_box():
     args = parser()
     cap = cv2.VideoCapture(args['VIDEO'])
-    
+    print(cap)
     #cap = cv2.VideoCapture(args["VIDEO"])
     #loop over frames of video file stream
     while(True):
