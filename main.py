@@ -38,7 +38,7 @@ def main():
 
     cap = cv2.VideoCapture(args['VIDEO'])
     cap.set(3,416)
-    cap.set(3,416)
+    cap.set(4,416)
     _, frame = cap.read()
     W = None
     H = None
