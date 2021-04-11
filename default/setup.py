@@ -43,7 +43,7 @@ def parser():
     arg.add_argument("--PATH_WEIGHTS",default="/darknet/backup/custom_tinyYOLOv4_final.weights")
     arg.add_argument("--PATH_CFG",default="/darknet/custom_tinyYOLOv4.cfg")
     arg.add_argument("--PATH_NAMES",default="/darknet/custom_data/obj.names")
-    arg.add_argument("--THRESHOLD",type=float,default=0.3,help="Minimum threshold for mask detection")
+    arg.add_argument("--THRESHOLD",type=float,default=0.5,help="Minimum threshold for mask detection")
     arg.add_argument("--CONFIDENCE",type=float,default=0.3,help="Minimum probability to filter weak detections")
     arg.add_argument("--SKIP-FRAMES",type=int, default = 30, help = "Number of frames to skip in detection")
     arg.add_argument("-s", "--skip-frames", type=int, default=30,help="# of skip frames between detections")

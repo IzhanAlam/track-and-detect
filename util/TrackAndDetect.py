@@ -139,7 +139,7 @@ class Frame:
 
         if self.frame_count >= self.detection_interval:
             self.detect()
-        
+
         self.frame_count += 1
         self.frame_rate_processing = round(cv2.getTickFrequency() / (cv2.getTickCount() - _timer), 2)
             
