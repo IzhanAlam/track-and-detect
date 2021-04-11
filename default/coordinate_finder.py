@@ -10,7 +10,6 @@ def get_box():
     first take a screenshot
     '''
     args = parser()
-    args['VIDEO'] = "/tracking-only/test.mp4"
     cap_ = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap_.read()
 
@@ -64,7 +63,6 @@ def get_line(orientation):
     first take a screenshot
     '''
     args = parser()
-    args['VIDEO'] = "/tracking-only/test.mp4"
     cap_ = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap_.read()
 
