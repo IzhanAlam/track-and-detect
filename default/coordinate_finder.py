@@ -9,9 +9,16 @@ def get_box():
     '''
     args = parser()
     cap_ = cv2.VideoCapture(args['VIDEO'])
-    print(args['VIDEO'])
-    ret, frame = cap_.read()
+    #ret, frame = cap_.read()
     
+    while(True):
+        ret, frame = cap_.read()
+        #Display output in a new window
+        cv2.imshow('Video',frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    cap.release()
+    cv2.destroyAllWindows
 
     W = None
     H = None
