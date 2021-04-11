@@ -26,13 +26,13 @@ def get_box():
     W = None
     H = None
 
-
+    '''
     cv2.imwrite('TestImage',frame)
     TakeScreenshot(frame,'TestImage')
 
-    '''
+    
     Get bounding box/pixel positions
-    '''
+    
     filepath = 'images/TestImage.jpg'
     finder = BoundingBoxFinder(filepath)
 
@@ -43,16 +43,17 @@ def get_box():
     
         
         # Close program with keyboard 'q'
-        '''
+        
         Upon exiting get the coordinates of the last bounding box
-        '''
+        
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     
-    
+    '''
     cap_.release()
     cv2.destroyAllWindows()
-    return finder.x, finder.y, finder.w, finder.h
+    #return finder.x, finder.y, finder.w, finder.h
+    return 100, 100, 200, 200
 
 
     
