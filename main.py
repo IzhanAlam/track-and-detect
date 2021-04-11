@@ -37,8 +37,8 @@ def main():
     ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
     cap = cv2.VideoCapture(args['VIDEO'])
-    cap.set(3,416)
-    cap.set(4,416)
+    cap.set(CV_CAP_PROP_FRAME_WIDTH,416)
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT,416)  
     _, frame = cap.read()
     W = None
     H = None
