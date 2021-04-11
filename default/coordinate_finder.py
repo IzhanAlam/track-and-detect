@@ -14,7 +14,7 @@ def get_box():
     _, frame = cap_.read()
     W = None
     H = None
-    #frame = imutils.resize(frame, height=416,width=416)
+    frame = imutils.resize(frame,width=416)
     TakeScreenshot(frame,'TestImage')
 
     '''
