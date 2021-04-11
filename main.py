@@ -54,7 +54,7 @@ def main():
             break
 
 
-        frame = imutils.resize(frame, height=416,width = 416)
+        #frame = imutils.resize(frame, height=416,width = 416)
         
 
         if W is None or H is None:
@@ -105,7 +105,7 @@ def main():
         
 
         #Display output in a new window
-        cv2.resizeWindow('Video', 416, 416) 
+        #cv2.resizeWindow('Video', 416, 416) 
         cv2.imshow('Video',output_frame)
         
         if cv2.waitKey(1) & 0xFF == ord('q'):
