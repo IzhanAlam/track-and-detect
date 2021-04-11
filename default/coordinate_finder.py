@@ -9,7 +9,22 @@ def get_box():
     '''
     args = parser()
     cap_ = cv2.VideoCapture(args['VIDEO'])
-    ret, frame = cap_.read()
+    #ret, frame = cap_.read()
+
+    while(True):
+        ret, frame = cap_.read()
+        #If frame could not be grabbed, end of feed.
+        if not ret:
+            print("END")
+            break
+
+        #Display output in a new window
+        cv2.imshow('Video',frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    cap_.release()
+    cv2.destroyAllWindows
+
     
     W = None
     H = None
