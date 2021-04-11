@@ -9,24 +9,8 @@ def get_box():
     '''
     args = parser()
     cap_ = cv2.VideoCapture(args['VIDEO'])
-    #ret, frame = cap_.read()
+    ret, frame = cap_.read()
     
-    while(True):
-        ret, frame = cap_.read()
-        #If frame could not be grabbed, end of feed.
-        if not ret:
-            print("END")
-            break
-
-        #Display output in a new window
-        cv2.imshow('Video',frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    cap_.release()
-    cv2.destroyAllWindows
-    
-
-    '''
     W = None
     H = None
 
@@ -34,9 +18,9 @@ def get_box():
     cv2.imwrite('TestImage',frame)
     TakeScreenshot(frame,'TestImage')
 
-    
+    '''
     Get bounding box/pixel positions
-    
+    '''
     filepath = 'images/TestImage.jpg'
     finder = BoundingBoxFinder(filepath)
 
@@ -47,9 +31,9 @@ def get_box():
     
         
         # Close program with keyboard 'q'
-        
+        '''
         Upon exiting get the coordinates of the last bounding box
-        
+        '''
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     
@@ -59,7 +43,7 @@ def get_box():
     return finder.x, finder.y, finder.w, finder.h
 
 
-    '''
+    
         
 def get_line(orientation):
 
