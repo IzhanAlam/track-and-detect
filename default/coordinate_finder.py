@@ -9,11 +9,8 @@ def get_box():
     '''
     args = parser()
     cap_ = cv2.VideoCapture(args['VIDEO'])
-    #ret, frame = cap_.read()
-
-    image = cap_.read()[1]
-    cv2.imshow('image',image)
-    cv2.destroyAllWindows()
+    print(args['VIDEO'])
+    ret, frame = cap_.read()
     
 
     W = None
@@ -21,7 +18,7 @@ def get_box():
 
 
     cv2.imwrite('TestImage',frame)
-    #TakeScreenshot(frame,'TestImage')
+    TakeScreenshot(frame,'TestImage')
 
     '''
     Get bounding box/pixel positions
