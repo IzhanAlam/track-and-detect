@@ -36,7 +36,7 @@ def gstreamer_pipeline(
 
 def parser():
 
-    #webcam = gstreamer_pipeline(flip_method=2)
+    webcam = gstreamer_pipeline(flip_method=2)
 
     arg = argparse.ArgumentParser(description="Counting the entry and exit of people")
     arg.add_argument("--YOLO",default="/darknet/",help="Directory to YOLO/Darknet")
@@ -50,6 +50,6 @@ def parser():
     arg.add_argument("--VIDEO", default="/tracking-only/test.mp4",help="Video path")
 
     args = vars(arg.parse_args())
-    #args['VIDEO'] = webcam
+    args['VIDEO'] = webcam
     return args
 
