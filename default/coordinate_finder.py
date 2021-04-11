@@ -6,46 +6,13 @@ import imutils
 from imutils.video import VideoStream
 
 def get_box():
-    args = parser()
-    cap = cv2.VideoCapture(args['VIDEO'])
-    print(cap)
-    #cap = cv2.VideoCapture(args["VIDEO"])
-    #loop over frames of video file stream
-    while(True):
-
-        grabbed, frame = cap.read()
-        #If frame could not be grabbed, end of feed.
-        if not grabbed:
-            print("END")
-            break
-        
-        
-        if W is None or H is None:
-            (H,W) = frame.shape[:2]
-        
-
-        #Display output in a new window
-        cv2.imshow('Video',frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
-    cap.release()
-    cv2.destroyAllWindows
-
-
-
-
-
-
     '''
     first take a screenshot
     '''
 
-
-
-
-    '''
+    
     args = parser()
+    args['VIDEO'] = "/tracking-only/test.mp4"
     cap_ = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap_.read()
     print(frame)
@@ -79,7 +46,7 @@ def get_box():
     cv2.destroyAllWindows
     
     return finder.x, finder.y, finder.w, finder.h
-    '''
+    
 
 
     
