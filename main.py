@@ -54,7 +54,7 @@ def main():
             break
 
 
-        #frame = imutils.resize(frame, height=416,width = 416)
+        frame = imutils.resize(frame,width = 416)
         
 
         if W is None or H is None:
