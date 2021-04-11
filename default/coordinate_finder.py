@@ -36,8 +36,8 @@ def get_box():
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     
-    cap_.release()
-    cv2.destroyAllWindows
+    #cap_.release()
+    #cv2.destroyAllWindows
     '''
     cv2.imwrite('TestImage',frame)
     TakeScreenshot(frame,'TestImage')
