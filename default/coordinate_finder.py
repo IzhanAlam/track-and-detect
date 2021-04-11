@@ -12,10 +12,9 @@ def get_box():
 
     
     args = parser()
-    args['VIDEO'] = "/tracking-only/test.mp4"
-    cap_ = cv2.VideoCapture(args['VIDEO'])
+    video = "/tracking-only/test.mp4"
+    cap_ = cv2.VideoCapture(video)
     _, frame = cap_.read()
-    print(frame)
     '''
     
 
