@@ -47,9 +47,9 @@ def parser():
     arg.add_argument("--CONFIDENCE",type=float,default=0.3,help="Minimum probability to filter weak detections")
     arg.add_argument("--SKIP-FRAMES",type=int, default = 30, help = "Number of frames to skip in detection")
     arg.add_argument("-s", "--skip-frames", type=int, default=30,help="# of skip frames between detections")
-    arg.add_argument("--VIDEO", default=webcam,help="Video path")
+    arg.add_argument("--VIDEO", default="/tracking-only/test.mp4",help="Video path")
 
     args = vars(arg.parse_args())
-
+    args['VIDEO'] = webcam
     return args
 
