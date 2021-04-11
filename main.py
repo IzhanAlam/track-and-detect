@@ -40,7 +40,7 @@ def main():
     _, frame = cap.read()
     frame = imutils.resize(frame,width = 416)
     W = 416
-    H = None
+    H = 416
 
     counter = frame_setup(frame)
     print("STARTING...setting up detection and tracking...")
