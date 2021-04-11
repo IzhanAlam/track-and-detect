@@ -88,7 +88,7 @@ def main():
 
         idxs = cv2.dnn.NMSBoxes(boxes, confidences, args["CONFIDENCE"],args["THRESHOLD"])
         
-        
+        '''
         if len(idxs) > 0:
             for i in idxs.flatten():
                 #status = "Detecting"
@@ -99,7 +99,7 @@ def main():
                 text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
                 cv2.putText(frame, text, (x, y-5), cv2.FONT_HERSHEY_SIMPLEX,0.5, color, 1)
         
-
+        '''
         counter.track_and_detect(frame, boxes, confidences, classIDs)
         output_frame = counter.show_result()
         
