@@ -37,8 +37,6 @@ def main():
     ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
     cap = cv2.VideoCapture(args['VIDEO'])
-    cap.set(3,416)
-    cap.set(4,416)
     _, frame = cap.read()
     frame = imutils.resize(frame, height=416,width = 416)
     W = None
@@ -107,7 +105,9 @@ def main():
         
 
         #Display output in a new window
+        cv2.resizeWindow('Video', 416, 416) 
         cv2.imshow('Video',output_frame)
+        
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     
