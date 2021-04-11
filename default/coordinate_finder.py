@@ -21,7 +21,7 @@ def get_box():
     cv2.destroyAllWindows
     
 
-    ''''
+    '''
     W = None
     H = None
 
@@ -54,7 +54,7 @@ def get_box():
     return finder.x, finder.y, finder.w, finder.h
 
 
-    ''''
+    '''
         
 def get_line(orientation):
 
