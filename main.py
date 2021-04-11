@@ -1,4 +1,3 @@
-
 import numpy as np
 import os
 import cv2
@@ -38,12 +37,12 @@ def main():
 
     cap = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap.read()
-    frame = imutils.resize(frame,width = 416)
-    W = 416
-    H = 416
+
+    W = None
+    H = None
 
     counter = frame_setup(frame)
-    print("STARTING...setting up detection and tracking...")
+
     while(True):
         frame = cap.read()
         frame = frame[1]
@@ -54,19 +53,18 @@ def main():
             break
 
 
-        frame = imutils.resize(frame,height=416,width = 416)
-        
+        frame = imutils.resize(frame, height=416,width = 416)
 
         if W is None or H is None:
-            (H, _) = frame.shape[:2]
-
+            (H, W) = frame.shape[:2]
+        
 
 
         boxes = []
         confidences = []
         classIDs = []
 
-        blob = cv2.dnn.blobFromImage(frame, 1 / 255.0, (W,H),swapRB=True, crop=False)
+        blob = cv2.dnn.blobFromImage(frame, 1 / 255.0, (416,416),swapRB=True, crop=False)
         net.setInput(blob)
         layerOutputs = net.forward(ln)
 
@@ -98,16 +96,14 @@ def main():
                 cv2.rectangle(frame, (x, y), (x + w, y + h), color, 1)
                 text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
                 cv2.putText(frame, text, (x, y-5), cv2.FONT_HERSHEY_SIMPLEX,0.5, color, 1)
-        
         '''
+
         counter.track_and_detect(frame, boxes, confidences, classIDs)
         output_frame = counter.show_result()
         
 
         #Display output in a new window
-        #cv2.resizeWindow('Video', 416, 416) 
         cv2.imshow('Video',output_frame)
-        
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     

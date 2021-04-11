@@ -262,7 +262,7 @@ class Frame:
 
         cv2.putText(frame, 'Count in: ' + str(self.person_in), (10, 80), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
         cv2.putText(frame, 'Count out: ' + str(self.person_out), (10, 95), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
-        cv2.putText(frame, 'Frame Processing Speed: ' + str(self.frame_rate_processing) + ' FPS', (10, self.frame_height - 20), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Frame Processing Speed: ' + str(self.frame_rate_processing) + ' FPS', (10, 125), cv2.FONT_HERSHEY_DUPLEX, 0.5, text_color, 1, cv2.LINE_AA)
 
         if self.show_counting:
             if self.roi_color_num_frame > 0:

@@ -14,7 +14,7 @@ def get_box():
     _, frame = cap_.read()
     W = None
     H = None
-    frame = imutils.resize(frame,width=416)
+    frame = imutils.resize(frame,height=416,width=416)
     TakeScreenshot(frame,'TestImage')
 
     '''
@@ -26,14 +26,7 @@ def get_box():
     while True:
         img = finder.show_image()
         cv2.imshow('Reference Image', img)
-
-        frame = cap_.read()
-        frame = frame[1]
-        
-        
-
-        if W is None or H is None:
-            (H, W) = frame.shape[:2]
+    
         
         # Close program with keyboard 'q'
         '''
@@ -42,9 +35,6 @@ def get_box():
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     
-    
-    cap_.release()
-    cv2.destroyAllWindows()
     
     
     cap_.release()
