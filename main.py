@@ -37,6 +37,8 @@ def main():
     ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
     cap = cv2.VideoCapture(args['VIDEO'])
+    cap.set(3,416)
+    cap.set(4,416)
     _, frame = cap.read()
     frame = imutils.resize(frame, height=416,width = 416)
     W = None
