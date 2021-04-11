@@ -22,9 +22,6 @@ def get_box():
         cv2.imshow('Video',frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-    cap_.release()
-    cv2.destroyAllWindows
-
     
     W = None
     H = None
