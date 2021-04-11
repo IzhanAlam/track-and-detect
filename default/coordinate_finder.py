@@ -13,11 +13,16 @@ def get_box():
     
     while(True):
         ret, frame = cap_.read()
+        #If frame could not be grabbed, end of feed.
+        if not ret:
+            print("END")
+            break
+
         #Display output in a new window
         cv2.imshow('Video',frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-    cap.release()
+    cap_.release()
     cv2.destroyAllWindows
     
 
