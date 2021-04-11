@@ -39,8 +39,8 @@ def main():
     cap = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap.read()
     #frame = imutils.resize(frame, height=416,width = 416)
-    W = None
-    H = None
+    W = 416
+    H = 416
 
     counter = frame_setup(frame)
     print("STARTING...setting up detection and tracking...")
