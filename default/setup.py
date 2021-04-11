@@ -5,7 +5,7 @@ import argparse
 #Using an MIPI CSI Camera needs opencv version that supports it otherwise the camera will not be
 # recognized using a gstreamper pipeline. ERROR -> Camera not detected 
 def gstreamer_pipeline(
-
+    
     #BETTER FPS PERFORMACE AT 416x416
     capture_width = 416,
     capture_height = 416,
@@ -15,7 +15,7 @@ def gstreamer_pipeline(
     flip_method = 1 #Flip the live-feed
 ):
     return (
-        "nvarguscamerasrc ! "
+        "nvarguscamerasrc wbmode=9 ! "
         "video/x-raw(memory:NVMM), "
         "width=(int)%d, height=(int)%d, "
         "format=(string)NV12, framerate=(fraction)%d/1 ! "
