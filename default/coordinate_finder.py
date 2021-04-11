@@ -2,6 +2,9 @@ import cv2
 from .get_pixel_coords import BoundingBoxFinder, TakeScreenshot
 from .setup import parser
 
+import imutils
+from imutils.video import VideoStream
+
 def get_box():
 
     '''
@@ -9,23 +12,32 @@ def get_box():
     '''
     args = parser()
     cap_ = cv2.VideoCapture(args['VIDEO'])
-    #ret, frame = cap_.read()
+    _, frame = cap_.read()
+    W = None
+    H = None
 
     while(True):
-        ret, frame = cap_.read()
-        #If frame could not be grabbed, end of feed.
-        if not ret:
+        frame = cap_.read()
+        frame = frame[1]
+
+        
+        if frame is None:
             print("END")
             break
+
+
+        frame = imutils.resize(frame, width = 416)
+
+        if W is None or H is None:
+            (H, W) = frame.shape[:2]
 
         #Display output in a new window
         cv2.imshow('Video',frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     
-    W = None
-    H = None
-
+    cap_.release()
+    cv2.destroyAllWindows
     '''
     cv2.imwrite('TestImage',frame)
     TakeScreenshot(frame,'TestImage')
@@ -50,8 +62,6 @@ def get_box():
             break
     
     '''
-    cap_.release()
-    cv2.destroyAllWindows()
     #return finder.x, finder.y, finder.w, finder.h
     return 100, 100, 200, 200
 
