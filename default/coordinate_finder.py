@@ -12,7 +12,8 @@ def get_box():
     args = parser()
     cap_ = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap_.read()
-
+    cap_.set(3,416)
+    cap_.set(4,416)
     W = None
     H = None
 
@@ -27,10 +28,10 @@ def get_box():
     while True:
         img = finder.show_image()
         cv2.imshow('Reference Image', img)
-        
+
         frame = cap_.read()
         frame = frame[1]
-
+        
         
 
         if W is None or H is None:
