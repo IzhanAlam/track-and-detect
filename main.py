@@ -39,7 +39,6 @@ def main():
     cap = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap.read()
     frame = imutils.resize(frame, height=416,width = 416)
-    frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     W = None
     H = None
 
@@ -67,7 +66,7 @@ def main():
         confidences = []
         classIDs = []
 
-        blob = cv2.dnn.blobFromImage(frame, 1 / 255.0, (W,H),swapRB=False, crop=False)
+        blob = cv2.dnn.blobFromImage(frame, 1 / 255.0, (W,H),swapRB=True, crop=False)
         net.setInput(blob)
         layerOutputs = net.forward(ln)
 
@@ -89,7 +88,7 @@ def main():
 
         idxs = cv2.dnn.NMSBoxes(boxes, confidences, args["CONFIDENCE"],args["THRESHOLD"])
         
-        '''
+        
         if len(idxs) > 0:
             for i in idxs.flatten():
                 #status = "Detecting"
@@ -99,7 +98,7 @@ def main():
                 cv2.rectangle(frame, (x, y), (x + w, y + h), color, 1)
                 text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
                 cv2.putText(frame, text, (x, y-5), cv2.FONT_HERSHEY_SIMPLEX,0.5, color, 1)
-        '''
+        
 
         counter.track_and_detect(frame, boxes, confidences, classIDs)
         output_frame = counter.show_result()
