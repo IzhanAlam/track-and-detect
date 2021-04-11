@@ -38,7 +38,7 @@ def main():
 
     cap = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap.read()
-    #frame = imutils.resize(frame, height=416,width = 416)
+    frame = imutils.resize(frame,width = 416)
     W = None
     H = None
 
