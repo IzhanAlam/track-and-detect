@@ -39,6 +39,7 @@ def main():
     cap = cv2.VideoCapture(args['VIDEO'])
     _, frame = cap.read()
     frame = imutils.resize(frame, height=416,width = 416)
+    frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     W = None
     H = None
 
@@ -55,7 +56,7 @@ def main():
 
 
         frame = imutils.resize(frame, height=416,width = 416)
-        frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
+        
 
         if W is None or H is None:
             (H, W) = frame.shape[:2]
