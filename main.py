@@ -65,7 +65,7 @@ def main():
         confidences = []
         classIDs = []
 
-        blob = cv2.dnn.blobFromImage(frame, 1 / 255.0, (W,H),swapRB=True, crop=False)
+        blob = cv2.dnn.blobFromImage(frame, 1 / 255.0, (W,H),swapRB=False, crop=False)
         net.setInput(blob)
         layerOutputs = net.forward(ln)
 
