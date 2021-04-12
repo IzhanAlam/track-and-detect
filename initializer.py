@@ -15,7 +15,7 @@ def frame_setup(frame):
     '''
     
     confidence_threshold = qtWindow.form.doubleSpinBox.value() #confidence of detections
-    sensitive_confidence_threshold = qtWindow.form.doubleSpinBox_2.value() #more sensitive confidence
+    sensitive_confidence_threshold = None #more sensitive confidence
     maxDetectFail = qtWindow.form.spinBox_4.value() #Number of frames before an object is no considered no longer to be in frame
     detection_interval = qtWindow.form.spinBox_3.value() #Number of frames object detection is carried out
     slower_detection = qtWindow.form.checkBox_4.isChecked() #Changes detection interval to one when no one is in the frame
